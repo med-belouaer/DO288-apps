@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.redhat.training.openshift.hello</groupId>
   <artifactId>micro-java</artifactId>
@@ -18,6 +17,7 @@
     <quarkus.platform.version>1.11.6.Final-redhat-00001</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
     <!-- Property to force using Deployments over DeploymentConfig objects goes here. -->
+    <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -104,6 +104,12 @@
             <maven.home>${maven.home}</maven.home>
           </systemPropertyVariables>
         </configuration>
+      </plugin>
+      <!-- JKube Maven plugin -->
+      <plugin>
+        <groupId>org.eclipse.jkube</groupId>
+        <artifactId>openshift-maven-plugin</artifactId>
+        <version>1.2.0</version>
       </plugin>
       <!-- Adding the jkube plugin configuration here -->
     </plugins>
